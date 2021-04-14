@@ -6,6 +6,8 @@ import java.util.List;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+//Classe responsavel por criar o treino
+
 @Document
 public class WorkoutMonitorModel {
 

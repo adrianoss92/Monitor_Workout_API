@@ -6,6 +6,7 @@ import org.springframework.stereotype.Repository;
 import com.spring.workMonitor.model.WorkoutMonitorModel;
 
 @Repository
+// Implementação de herança com uma classe abstrata.
 public interface WorkoutRepository extends MongoRepository<WorkoutMonitorModel, String> {
  
 }

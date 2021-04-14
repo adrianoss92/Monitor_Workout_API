@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.spring.workMonitor.exeption.WorkoutExeption;
 import com.spring.workMonitor.model.WorkoutMonitorModel;
 import com.spring.workMonitor.service.WorkMonitorService;
 
@@ -29,23 +28,28 @@ public class WorkMonitorController {
 	@Autowired
 	WorkMonitorService workMonitorService;
 	
+	// método que retorna todos os treinos
+	
 	@GetMapping("/workout")
 	public ResponseEntity<List<WorkoutMonitorModel>> getAllWorkout(){
 		List<WorkoutMonitorModel> allWorkout = workMonitorService.findAll();
 		return new ResponseEntity<List<WorkoutMonitorModel>>(allWorkout, HttpStatus.OK);
 	}
+
+	//método que retorna apenas um treino a partir do seu id
 	
 	@GetMapping("/workout/{id}")
 	public ResponseEntity<WorkoutMonitorModel> getWorkoutb(@PathVariable(value="id") String id){
 		
-		
 		Optional<WorkoutMonitorModel> treino = workMonitorService.findById(id);
-		if(treino == null) {
+		if(!treino.isPresent()) {
 			 return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		} else {
 			return new ResponseEntity<WorkoutMonitorModel>(treino.get(), HttpStatus.OK);
 		}		
 	}
+	
+	// metodo que cria um novo treino
 	
 	@PostMapping("/workout")
     public ResponseEntity<WorkoutMonitorModel> saveWorkout(@RequestBody @Validated WorkoutMonitorModel workout) {
@@ -53,6 +57,8 @@ public class WorkMonitorController {
         return new ResponseEntity<WorkoutMonitorModel>(workMonitorService.save(workout), HttpStatus.CREATED);
     }
 		
+	// metodo que atualiza um treino existente
+	
 	@PutMapping("/workout/{id}")
 	public ResponseEntity<WorkoutMonitorModel> updateWorkout(@RequestBody @Validated WorkoutMonitorModel workout, 
 															@PathVariable(value="id") String id){
@@ -68,6 +74,7 @@ public class WorkMonitorController {
 		}		
 	}
 	
+	// método que exclui um treino
 	@DeleteMapping("/workout/{id}")
 	public ResponseEntity<?> removeWorkout(@PathVariable(value="id") String id){
 		Optional<WorkoutMonitorModel> treino = workMonitorService.findById(id);

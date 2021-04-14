@@ -2,12 +2,14 @@ package com.spring.workMonitor.model;
 
 import org.springframework.data.mongodb.core.mapping.Document;
 
+//Classe responsavel por montar o objeto
+
 @Document
 public class ExercicioModel {
 	
 	private String name;
 	private String repetition;
-	private String weight; 
+	private String weight;
 	
 	public String getName() {
 		return name;

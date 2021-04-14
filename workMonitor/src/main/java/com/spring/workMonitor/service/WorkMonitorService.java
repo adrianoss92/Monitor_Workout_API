@@ -5,6 +5,7 @@ import java.util.Optional;
 
 import com.spring.workMonitor.model.WorkoutMonitorModel;
 
+// Implementação de Interface
 public interface WorkMonitorService {
 	
 	public List<WorkoutMonitorModel> findAll();
