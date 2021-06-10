@@ -1,2 +1,2 @@
 # Monitor_Workout
-Repositorio utilizado para estudos do Angular 11
+Repositorio utilizado para estudos do Java
